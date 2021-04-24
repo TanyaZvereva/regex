@@ -23,3 +23,18 @@ test('should find invalid characters at the end of name', () => {
   const result = () => validator.validateUsername('Hashtag2');
   expect(result).toThrowError('name ends with invalid characters');
 });
+test('s^s', () => {
+  const validator = new Validator();
+  const result = () => validator.validateUsername('s^s');
+  expect(result).toThrowError('name contains invalid characters');
+});
+test('s6s', () => {
+  const validator = new Validator();
+  validator.validateUsername('s6s');
+  expect(true).toBe(true);
+});
+test('s333s', () => {
+  const validator = new Validator();
+  validator.validateUsername('s333s');
+  expect(true).toBe(true);
+});
